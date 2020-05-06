@@ -5,6 +5,10 @@ _amdgpu=	amdgpu
 _amdkfd=	amdkfd
 .endif
 
+.if ${MACHINE_ARCH} == "powerpc64"
+_amdgpu=	amdgpu
+.endif
+
 SUBDIR=	${_amdgpu} \
 	${_amdkfd}
 

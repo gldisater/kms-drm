@@ -2924,7 +2924,7 @@ i915_gem_object_pwrite_gtt(struct drm_i915_gem_object *obj,
 #ifndef __linux__
 		(void)data;
 		(void)err;
-		page = shmem_read_mapping_page(mapping, offset);
+		page = shmem_read_mapping_page(mapping, OFF_TO_IDX(offset));
 #else
 		err = pagecache_write_begin(obj->base.filp, mapping,
 					    offset, len, 0,
@@ -5875,7 +5875,7 @@ i915_gem_object_create_from_data(struct drm_i915_private *dev_priv,
 #else
 		(void)err;
 		(void)pgdata;
-		page = shmem_read_mapping_page(obj->base.filp->f_shmem, offset);
+		page = shmem_read_mapping_page(obj->base.filp->f_shmem, OFF_TO_IDX(offset));
 #endif
 
 		vaddr = kmap(page);
